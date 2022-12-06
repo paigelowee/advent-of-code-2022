@@ -1,5 +1,3 @@
-
-
 def main():
   def soln1():
     with open ('day6/input.txt', 'r') as file:
