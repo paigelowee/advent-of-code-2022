@@ -1,11 +1,12 @@
 import math
+import os
 
 def main():
   soln1()
   soln2()
 
 def soln1():
-  with open('day8/input.txt', 'r') as file:
+  with open(os.path.dirname(__file__) + '/input.txt', 'r') as file:
     visible_count = 0
     data = [list(line.replace('\n', '')) for line in file]
     end_col = len(data[0]) -1
@@ -54,7 +55,7 @@ def get_scenic_score(tree, arr, reverse=False):
   return int(scenic_score)
 
 def soln2():
-  with open('day8/input.txt', 'r') as file:
+  with open(os.path.dirname(__file__) + '/input.txt', 'r') as file:
     data = [list(line.replace('\n', '')) for line in file]
     end_row = len(data)
 
@@ -63,21 +64,22 @@ def soln2():
     for row_index, row in enumerate(data):
       for y_index, col in enumerate(row):
         column_array[y_index].append(col)
+
     highest_scenic_score = 0
     for row_index, row in enumerate(data):
       for y_index, tree in enumerate(row):
         right = row[y_index +1:]
         left = row[0: y_index]
-        bottom = column_array[y_index][row_index +1:]
+        bottom = column_array[y_index][row_index + 1:]
         top = column_array[y_index][0: row_index]
         scenic_scores = []
-        for arr in [left, bottom]:
+        for arr in [left, top]:
           s = get_scenic_score(tree, arr, True)
           scenic_scores.append(s)
-        for arr in [right, top]:
+        for arr in [right, bottom]:
           s = get_scenic_score(tree, arr)
           scenic_scores.append(s)
-        scenic_score = scenic_scores[0] * scenic_scores[1] * scenic_scores[2] * scenic_scores[3]
+        scenic_score = math.prod(scenic_scores)
         if scenic_score > highest_scenic_score:
           highest_scenic_score = scenic_score
 
