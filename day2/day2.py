@@ -1,4 +1,5 @@
-# Day 2 - rock paper scissors
+import os
+
 winning_map = {
   'A': 'Y',
   'B': 'Z',
@@ -25,7 +26,7 @@ lose_map = {
 
 def soln1():
   total_score = 0
-  with open('day2/input.txt', 'r') as file:
+  with open(os.path.dirname(__file__) + '/input.txt', 'r') as file:
     for line in file:
       moves = line.split()
       p1_move = moves[0]
@@ -66,6 +67,9 @@ def soln2():
 
     print(total_score)
 
-if __name__ == '__main__':
+def main():
   soln1()
   soln2()
+
+if __name__ == '__main__':
+  main()

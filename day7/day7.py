@@ -1,5 +1,7 @@
+import os
+
 def soln1():
-  with open('day7/input.txt', 'r') as file:
+  with open(os.path.dirname(__file__) + '/input.txt', 'r') as file:
     # maintain current path
     path = ['/']
     file_sizes = {}

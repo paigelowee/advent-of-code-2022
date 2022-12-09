@@ -1,5 +1,7 @@
+import os
+
 def main():
-  with open('day1.txt', 'r') as file:
+  with open(os.path.dirname(__file__) + '/input.txt', 'r') as file:
     elf_snacks = []
     total = 0
     for line in file:

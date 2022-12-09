@@ -1,5 +1,7 @@
+import os
+
 def soln1():
-  with open('day4/input.txt', 'r') as file:
+  with open(os.path.dirname(__file__) + '/input.txt', 'r') as file:
     pairs = 0
     for line in file:
       line = line.replace('\n', '').split(',')
@@ -12,7 +14,7 @@ def soln1():
   print(pairs)
 
 def soln2():
-  with open('day4/input.txt', 'r') as file:
+  with open(os.path.dirname(__file__) + '/input.txt', 'r') as file:
     pairs = 0
     for line in file:
       line = line.replace('\n', '').split(',')
@@ -25,6 +27,9 @@ def soln2():
         pairs +=1
   print(pairs)
 
-if __name__ == '__main__':
-  # soln1()
+def main():
+  soln1()
   soln2()
+
+if __name__ == '__main__':
+  main()

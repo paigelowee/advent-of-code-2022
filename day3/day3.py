@@ -1,10 +1,11 @@
 import string
+import os
 
 lower_score_dict = {letter: i + 1 for i, letter in enumerate(string.ascii_lowercase)}
 upper_score_dict = {letter: i + 27 for i, letter in enumerate(string.ascii_uppercase)}
 
 def soln1():
-  with open('day3/input.txt') as file:
+  with open(os.path.dirname(__file__) + '/input.txt', 'r') as file:
     total = 0
     for line in file:
       line = line.replace("\n", "")
@@ -23,7 +24,7 @@ def soln1():
   print(total)
 
 def soln2():
-  with open('day3/input.txt') as file:
+  with open(os.path.dirname(__file__) + '/input.txt', 'r') as file:
     input_lines = [line.replace('\n', '') for line in file]
     N = 0
     total = 0
@@ -40,5 +41,9 @@ def soln2():
       total += value
     print(total)
 
-if __name__ == '__main__':
+def main():
+  soln1()
   soln2()
+
+if __name__ == '__main__':
+  main()
