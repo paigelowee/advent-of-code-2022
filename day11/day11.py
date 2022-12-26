@@ -35,6 +35,11 @@ def initialise_monkey(data):
   false = int(data[5].replace('If false: throw to monkey ', '').strip())
   return Monkey(items, operation, test, true, false)
 
+def  get_greatest_denominator(x, y):
+  while y != 0:
+      (x, y) = (y, x % y)
+  return x
+
 def soln1():
   with open(os.path.dirname(__file__) + '/input.txt', 'r') as file:
     data = [line.replace('\n', '') for line in file]
@@ -46,7 +51,7 @@ def soln1():
     x +=7
 
   # for each round and then monkey, let them have their go
-  for round in range(20):
+  for round in range(10000):
     for monkey in monkey_array:
       monkey_items = monkey.items
       for item in monkey_items:
@@ -60,7 +65,7 @@ def soln1():
         worry = eval(str(worry)+op)
 
         # feel relief
-        worry = math.floor(worry/3)
+        # worry = math.floor(worry/3)
         # # test the outcome
         res = monkey.test_outcome(worry)
         # throw the item to the resultant monkey
